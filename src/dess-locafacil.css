@@ -1,0 +1,1027 @@
+/* ==========================================================================
+   DESS LOCAFÁCIL — SAAS PRODUCT DESIGN SYSTEM
+   Theme: Light Mode & Dark Mode Support
+   Primary Brand: Vermelho DESS (#E50914 / #FF2A3A)
+   ========================================================================== */
+
+.dess-theme-light {
+  --dess-bg: #ffffff;
+  --dess-bg-alt: #f8fafc;
+  --dess-bg-tertiary: #f1f5f9;
+  --dess-card: #ffffff;
+  --dess-card-border: #e2e8f0;
+  --dess-card-hover-border: #cbd5e1;
+  --dess-text: #0f172a;
+  --dess-text-secondary: #475569;
+  --dess-text-muted: #64748b;
+  --dess-red: #e50914;
+  --dess-red-hover: #cc0812;
+  --dess-red-light: rgba(229, 9, 20, 0.08);
+  --dess-red-glow: rgba(229, 9, 20, 0.2);
+  --dess-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --dess-shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 0 1px rgba(0, 0, 0, 0.1);
+  --dess-shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+  --dess-header-bg: rgba(255, 255, 255, 0.88);
+}
+
+.dess-theme-dark {
+  --dess-bg: #070a0f;
+  --dess-bg-alt: #0b0f17;
+  --dess-bg-tertiary: #111722;
+  --dess-card: #0e141f;
+  --dess-card-border: rgba(255, 255, 255, 0.08);
+  --dess-card-hover-border: rgba(255, 42, 58, 0.35);
+  --dess-text: #f8fafc;
+  --dess-text-secondary: #94a3b8;
+  --dess-text-muted: #64748b;
+  --dess-red: #ff2a3a;
+  --dess-red-hover: #ff4755;
+  --dess-red-light: rgba(255, 42, 58, 0.1);
+  --dess-red-glow: rgba(255, 42, 58, 0.35);
+  --dess-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --dess-shadow-md: 0 12px 32px -8px rgba(0, 0, 0, 0.6), 0 0 1px var(--dess-card-border);
+  --dess-shadow-lg: 0 24px 60px -12px rgba(0, 0, 0, 0.8), 0 0 24px rgba(255, 42, 58, 0.12);
+  --dess-header-bg: rgba(7, 10, 15, 0.88);
+}
+
+.dess-page-wrapper {
+  background-color: var(--dess-bg);
+  color: var(--dess-text);
+  min-height: 100vh;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ==========================================================================
+   DESS Layout & Shared Utilities
+   ========================================================================== */
+
+.dess-container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (min-width: 768px) {
+  .dess-container {
+    padding: 0 32px;
+  }
+}
+
+.dess-section {
+  padding: 90px 0;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .dess-section {
+    padding: 60px 0;
+  }
+}
+
+.dess-section-alt {
+  background-color: var(--dess-bg-alt);
+}
+
+.dess-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--dess-red-light);
+  border: 1px solid rgba(255, 42, 58, 0.25);
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--dess-red);
+  letter-spacing: 0.04em;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+
+.dess-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--dess-red);
+  box-shadow: 0 0 8px var(--dess-red);
+  animation: dessPulseDot 2.2s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+@keyframes dessPulseDot {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.4); opacity: 1; box-shadow: 0 0 12px var(--dess-red); }
+}
+
+.dess-title-large {
+  font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--dess-text);
+  margin-bottom: 18px;
+}
+
+.dess-title-medium {
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  color: var(--dess-text);
+  margin-bottom: 16px;
+}
+
+.dess-subtitle {
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  color: var(--dess-text-secondary);
+  line-height: 1.65;
+  max-width: 620px;
+}
+
+.dess-center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dess-text-red {
+  color: var(--dess-red);
+}
+
+/* DESS Buttons */
+.dess-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 26px;
+  border-radius: 9999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.dess-btn-primary {
+  background: var(--dess-red);
+  color: #ffffff;
+  box-shadow: 0 6px 24px var(--dess-red-glow);
+}
+
+.dess-btn-primary:hover {
+  background: var(--dess-red-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px var(--dess-red-glow);
+}
+
+.dess-btn-secondary {
+  background: var(--dess-card);
+  color: var(--dess-text);
+  border: 1px solid var(--dess-card-border);
+}
+
+.dess-btn-secondary:hover {
+  border-color: var(--dess-card-hover-border);
+  transform: translateY(-2px);
+  box-shadow: var(--dess-shadow-md);
+}
+
+.dess-btn-sm {
+  padding: 8px 18px;
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   1. DESS NAVBAR
+   ========================================================================== */
+
+.dess-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--dess-header-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--dess-card-border);
+  padding: 14px 0;
+  transition: all 0.3s ease;
+}
+
+.dess-nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dess-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  color: var(--dess-text);
+}
+
+.dess-logo-badge {
+  background: var(--dess-red);
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+.dess-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+
+.dess-nav-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--dess-text-secondary);
+  transition: color 0.2s ease;
+}
+
+.dess-nav-link:hover {
+  color: var(--dess-red);
+}
+
+.dess-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dess-theme-toggle-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--dess-bg-tertiary);
+  border: 1px solid var(--dess-card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dess-text);
+  transition: all 0.2s ease;
+}
+
+.dess-theme-toggle-btn:hover {
+  background: var(--dess-red-light);
+  color: var(--dess-red);
+  border-color: var(--dess-red);
+}
+
+.dess-back-btn {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--dess-text-secondary);
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--dess-bg-tertiary);
+  border: 1px solid var(--dess-card-border);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.dess-back-btn:hover {
+  color: var(--dess-text);
+  border-color: var(--dess-text-secondary);
+}
+
+@media (max-width: 900px) {
+  .dess-nav-links {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   2. HERO SECTION
+   ========================================================================== */
+
+.dess-hero {
+  padding-top: 130px;
+  padding-bottom: 80px;
+  overflow: hidden;
+  position: relative;
+}
+
+.dess-hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 48px;
+}
+
+.dess-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 32px 0 24px;
+}
+
+.dess-hero-bullets {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-top: 16px;
+}
+
+.dess-bullet-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dess-text-secondary);
+}
+
+.dess-bullet-check {
+  color: var(--dess-red);
+  font-weight: 800;
+}
+
+.dess-hero-mockup-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.dess-hero-mockup-img {
+  width: 100%;
+  max-width: 580px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: var(--dess-shadow-lg);
+  border: 1px solid var(--dess-card-border);
+  transition: transform 0.4s ease;
+}
+
+.dess-hero-mockup-img:hover {
+  transform: translateY(-4px);
+}
+
+@media (max-width: 992px) {
+  .dess-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* ==========================================================================
+   3. PROBLEM SECTION (Antes vs Depois)
+   ========================================================================== */
+
+.dess-problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.dess-problem-card {
+  background: var(--dess-card);
+  border: 1px solid var(--dess-card-border);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--dess-shadow-sm);
+  transition: all 0.25s ease;
+}
+
+.dess-problem-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(229, 9, 20, 0.4);
+  box-shadow: var(--dess-shadow-md);
+}
+
+.dess-problem-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(229, 9, 20, 0.1);
+  color: var(--dess-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dess-problem-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--dess-text);
+}
+
+.dess-problem-desc {
+  font-size: 0.88rem;
+  color: var(--dess-text-secondary);
+  line-height: 1.55;
+}
+
+.dess-solution-banner {
+  margin-top: 48px;
+  background: linear-gradient(135deg, var(--dess-card), var(--dess-bg-tertiary));
+  border: 1px solid rgba(255, 42, 58, 0.3);
+  border-radius: 18px;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  box-shadow: var(--dess-shadow-md);
+}
+
+.dess-solution-content h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: var(--dess-text);
+}
+
+@media (max-width: 900px) {
+  .dess-problem-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   4. 6 PILARES DA PLATAFORMA
+   ========================================================================== */
+
+.dess-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.dess-pillar-card {
+  background: var(--dess-card);
+  border: 1px solid var(--dess-card-border);
+  border-radius: 18px;
+  padding: 32px 28px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--dess-shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.dess-pillar-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--dess-red);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dess-pillar-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--dess-red);
+  box-shadow: var(--dess-shadow-md);
+}
+
+.dess-pillar-card:hover::before {
+  opacity: 1;
+}
+
+.dess-pillar-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--dess-red-light);
+  color: var(--dess-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.dess-pillar-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--dess-text);
+  margin-bottom: 10px;
+}
+
+.dess-pillar-desc {
+  font-size: 0.9rem;
+  color: var(--dess-text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 992px) {
+  .dess-pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .dess-pillars-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   5. DASHBOARD & INTERFACE MODULES
+   ========================================================================== */
+
+.dess-module-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  margin-bottom: 72px;
+}
+
+.dess-module-split.reverse {
+  direction: rtl;
+}
+
+.dess-module-split.reverse > * {
+  direction: ltr;
+}
+
+.dess-module-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dess-module-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.dess-module-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.92rem;
+  color: var(--dess-text-secondary);
+}
+
+.dess-module-feature-bullet {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--dess-red-light);
+  color: var(--dess-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.dess-module-card-preview {
+  background: var(--dess-card);
+  border: 1px solid var(--dess-card-border);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: var(--dess-shadow-md);
+  position: relative;
+}
+
+/* Status Chips */
+.dess-status-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.dess-status-chip {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.dess-status-green { background: rgba(34, 197, 94, 0.12); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.25); }
+.dess-status-blue { background: rgba(59, 130, 246, 0.12); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.25); }
+.dess-status-yellow { background: rgba(234, 179, 8, 0.12); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.25); }
+.dess-status-red { background: rgba(239, 68, 68, 0.12); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.25); }
+
+@media (max-width: 900px) {
+  .dess-module-split {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .dess-module-split.reverse {
+    direction: ltr;
+  }
+}
+
+/* ==========================================================================
+   6. VISTORIAS: ENTRADA VS DEVOLUÇÃO COMPARISON
+   ========================================================================== */
+
+.dess-inspection-comparator {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.dess-inspection-col {
+  background: var(--dess-bg-tertiary);
+  border: 1px solid var(--dess-card-border);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dess-inspection-badge {
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 6px;
+  width: fit-content;
+  text-transform: uppercase;
+}
+
+.dess-inspection-badge.entry {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+.dess-inspection-badge.return {
+  background: rgba(229, 9, 20, 0.15);
+  color: var(--dess-red);
+}
+
+@media (max-width: 640px) {
+  .dess-inspection-comparator {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   7. TIMELINE & WORKFLOW DA LOCAÇÃO
+   ========================================================================== */
+
+.dess-workflow-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.dess-step-card {
+  background: var(--dess-card);
+  border: 1px solid var(--dess-card-border);
+  border-radius: 14px;
+  padding: 20px 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.dess-step-card:hover {
+  border-color: var(--dess-red);
+  transform: translateY(-3px);
+}
+
+.dess-step-number {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--dess-red);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dess-step-label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--dess-text);
+}
+
+/* ==========================================================================
+   8. INTERACTIVE TOUR (Smartphone Showcase)
+   ========================================================================== */
+
+.dess-tour-wrapper {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.dess-tour-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dess-tour-tab {
+  padding: 14px 20px;
+  border-radius: 12px;
+  background: var(--dess-card);
+  border: 1px solid var(--dess-card-border);
+  color: var(--dess-text-secondary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dess-tour-tab.active {
+  background: var(--dess-red-light);
+  border-color: var(--dess-red);
+  color: var(--dess-red);
+  font-weight: 700;
+}
+
+.dess-tour-display {
+  background: var(--dess-card);
+  border: 1px solid var(--dess-card-border);
+  border-radius: 24px;
+  padding: 36px;
+  box-shadow: var(--dess-shadow-lg);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 32px;
+  align-items: center;
+}
+
+@media (max-width: 992px) {
+  .dess-tour-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .dess-tour-display {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   9. AUDIENCE (Para quem é) & COMPARISON (Antes x Depois)
+   ========================================================================== */
+
+.dess-audience-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.dess-audience-card {
+  background: var(--dess-card);
+  border: 1px solid var(--dess-card-border);
+  border-radius: 16px;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--dess-shadow-sm);
+  transition: all 0.25s ease;
+}
+
+.dess-audience-card:hover {
+  border-color: var(--dess-red);
+  transform: translateY(-4px);
+  box-shadow: var(--dess-shadow-md);
+}
+
+.dess-audience-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--dess-text);
+}
+
+.dess-audience-desc {
+  font-size: 0.88rem;
+  color: var(--dess-text-secondary);
+  line-height: 1.55;
+}
+
+@media (max-width: 992px) {
+  .dess-audience-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .dess-audience-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Comparison Table */
+.dess-compare-table {
+  width: 100%;
+  margin-top: 40px;
+  background: var(--dess-card);
+  border: 1px solid var(--dess-card-border);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--dess-shadow-sm);
+}
+
+.dess-compare-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--dess-card-border);
+  align-items: center;
+}
+
+.dess-compare-row:last-child {
+  border-bottom: none;
+}
+
+.dess-compare-header {
+  background: var(--dess-bg-tertiary);
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.dess-compare-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   10. FAQ ACCORDION
+   ========================================================================== */
+
+.dess-faq-list {
+  max-width: 800px;
+  margin: 40px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dess-faq-item {
+  background: var(--dess-card);
+  border: 1px solid var(--dess-card-border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dess-faq-question {
+  width: 100%;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dess-text);
+  cursor: pointer;
+  background: transparent;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.dess-faq-question:active {
+  background-color: var(--dess-bg-tertiary);
+}
+
+.dess-faq-icon {
+  color: var(--dess-red);
+  font-size: 1.25rem;
+  font-weight: 700;
+  transition: transform 0.25s ease;
+  display: inline-block;
+  line-height: 1;
+}
+
+.dess-faq-icon.is-open {
+  transform: rotate(45deg);
+}
+
+.dess-faq-answer {
+  padding: 0 24px 20px;
+  color: var(--dess-text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  animation: faqSlideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: top;
+}
+
+@keyframes faqSlideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Fluid Micro-interactions for DESS */
+.dess-problem-card, .dess-pillar-card, .dess-step-card, .dess-audience-card, .dess-tour-tab, .dess-btn, .dess-status-chip {
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.dess-problem-card:active, .dess-pillar-card:active, .dess-step-card:active, .dess-audience-card:active, .dess-tour-tab:active, .dess-btn:active, .dess-status-chip:active {
+  transform: scale(0.97);
+}
+
+.dess-tour-screen-content {
+  animation: tourFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+@keyframes tourFadeIn {
+  from { opacity: 0; transform: translate3d(0, 10px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* ==========================================================================
+   11. FINAL CTA & FOOTER
+   ========================================================================== */
+
+.dess-cta-card {
+  background: linear-gradient(135deg, var(--dess-card), var(--dess-bg-tertiary));
+  border: 1px solid rgba(255, 42, 58, 0.35);
+  border-radius: 28px;
+  padding: 64px 40px;
+  text-align: center;
+  box-shadow: var(--dess-shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.dess-footer {
+  border-top: 1px solid var(--dess-card-border);
+  padding: 48px 0 32px;
+  background: var(--dess-bg);
+}
+
+.dess-footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--dess-card-border);
+}
+
+.dess-footer-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.dess-footer-links a {
+  color: var(--dess-text-secondary);
+  font-size: 0.88rem;
+}
+
+.dess-footer-links a:hover {
+  color: var(--dess-red);
+}
+
+.dess-footer-bottom {
+  padding-top: 24px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--dess-text-muted);
+}
