@@ -1,7 +1,7 @@
-import dessMockup from '../assets/dess-locafacil-mockups.jpg';
-import barberflowMockup from '../assets/barberflow-mockup.jpg';
-import multimediaMockup from '../assets/multimedia-mockup.jpg';
-import siteMockup from '../assets/site-profissional-mockup.jpg';
+import dessMockup from '../assets/dess-locafacil-mockups.webp';
+import barberflowMockup from '../assets/barberflow-mockup.webp';
+import multimediaMockup from '../assets/multimedia-mockup.webp';
+import siteMockup from '../assets/site-profissional-mockup.webp';
 import { portfolioData } from '../data/portfolioData';
 
 export default function SelectedWork({ onSelectProject, onOpenDessPage }) {

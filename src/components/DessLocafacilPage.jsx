@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import dessMockupImg from '../assets/dess-locafacil-mockups.jpg';
+import dessMockupImg from '../assets/dess-locafacil-mockups.webp';
 import '../dess-locafacil.css';
 
 export default function DessLocafacilPage({ onBackToPortfolio, onOpenContact }) {

@@ -68,10 +68,7 @@ export function MusicProvider({ children }) {
       }
     };
 
-    // Attempt direct autoplay on reload
-    if (!isExplicitlyPaused) {
-      attemptPlay();
-    }
+    // Autoplay will trigger on first user gesture below to prevent blocking page load
 
     // Fallback: auto-resume on first user gesture (touch, scroll, click, keydown)
     const handleFirstInteraction = () => {
@@ -149,7 +146,7 @@ export function MusicProvider({ children }) {
       <audio
         ref={audioRef}
         src={audioTrack}
-        preload="auto"
+        preload="none"
         loop
       />
       {children}
